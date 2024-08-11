@@ -1,0 +1,607 @@
+:root {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  font-family: Arial, sans-serif;
+}
+
+
+@media (max-width: 768px) {
+  .logo {
+      display: none; /* Hide the logo on small screens */
+  }
+
+  .header {
+      display: none; /* Hide the header on small screens, or adjust as needed */
+  }
+  .header.sticky {
+      display: none;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 10px 0;
+  background-color: transparent;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  z-index: 1;
+}
+
+.header.sticky {
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+  opacity: 1;
+  z-index: 1; /* Increased z-index to ensure it stays on top of most elements */
+  overflow: visible;
+  position: fixed; /* Ensure header is fixed at the top */
+  top: 0;
+  width: 100%; /* Ensure the header takes full width */
+}
+
+.logo {
+  margin-left: 50px; /* Reset margin-left */
+  z-index: 10000; /* Keep it higher than other elements in the header */
+}
+
+.logo img {
+  width: 100px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%;
+  z-index: 10000;
+}
+.navbar {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  padding: 10px;
+  margin: 25px;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: background-color 0.3s, border-radius 0.3s;
+}
+
+.header.sticky .navbar {
+  background-color:transparent;
+  border-radius: 0; /* Remove border-radius when sticky */
+}
+
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.navbar li {
+  margin-right: 20px;
+}
+
+.navbar a {
+  color: #000;
+  text-decoration: none;
+  padding: 8px 16px;
+}
+
+.header.sticky .navbar a {
+  color: #fff;
+}
+
+.content {
+  padding-top: 100px; /* Adjust based on header height */
+}
+
+.background-image {
+  position: relative;
+  height: 80vh;
+  width: 100%;
+  border-radius: 0 0 50px 50px; /* Make the bottom edges round */
+  overflow: hidden; /* Ensure the rounded corners are visible */
+  background-size: cover;
+  background-position: center;
+}
+
+.background-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.center-button {
+  position: absolute;
+  top: 45%; /* Adjusted to move slightly above the dashboard */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.center-button button {
+  background-color: #ffffff;
+  color: #de19e5;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.center-button button:hover {
+  background-color: purple;
+  color: white;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  color: #fff;
+}
+
+.content h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.logo-globe {
+  position: fixed;
+  top: 46px;
+  right: 130px;
+  z-index: 1;
+}
+
+.logo-globe img {
+  width: 20px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 20px;
+}
+
+.logo-search {
+  position: fixed;
+  top: 46px;
+  right: 200px;
+  z-index: 1;
+}
+
+.logo-search img {
+  width: 20px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 20px;
+}
+
+.dashboard {
+  background-color: rgba(249, 249, 249, 0.3); /* 50% opacity */
+  color: #333;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners for the box */
+  border-top: 1px solid #ddd;
+  position: absolute;
+  bottom: 3%; /* Positioned above the bottom edge of the background image */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%; /* Adjust as needed */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+}
+
+.dashboard .dashboard-item {
+  text-align: center;
+  flex: 1;
+  padding: 20px;
+  position: relative;
+}
+
+.dashboard .dashboard-item:not(:last-child) {
+  border-right: 1px solid #ddd; /* Vertical line separator */
+}
+
+.dashboard .dashboard-item h3 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.dashboard .dashboard-item p {
+  font-size: 18px;
+  margin: 10px 0;
+  color: rgb(255, 255, 255);
+}
+
+.dashboard .dashboard-item span {
+  font-size: 32px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+}
+
+@keyframes countUp {
+  from {
+      counter-reset: num 1;
+  }
+  to {
+      counter-reset: num var(--end);
+  }
+}
+
+.dashboard-item span {
+  font-size: 32px;
+  font-weight: bold;
+  color: purple;
+  display: inline-block;
+  counter-reset: num 0;
+  animation: countUp 2s forwards;
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+      display: none;
+  }
+}
+
+.toggle-btn {
+  display: block; /* Ensure the button is displayed */
+  position: fixed; /* Fix its position relative to the viewport */
+  top: 10px;
+  right: 20px;
+  z-index: 9999; /* Very high z-index to ensure it's on top */
+  cursor: pointer;
+  color: #F1FFFF;
+  font-size: 28px;
+}
+
+.logo {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+}
+
+.mobile-navbar {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  top: 50px;
+  right: 10px; /* Adjust this value to move it away from the right border */
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 50%;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.mobile-navbar a {
+  color: purple;
+  text-decoration: none;
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.mobile-navbar a:hover {
+  background-color: #333;
+}
+
+/* Show the toggle button and mobile navbar on small screens */
+@media (max-width: 768px) {
+  .toggle-btn {
+      display: block;
+  }
+
+  .navbar {
+      display: none;
+  }
+
+  .mobile-navbar.active {
+      display: flex;
+  }
+}
+
+@media (min-width: 769px) {
+  .toggle-btn {
+      display: none; /* Hide toggle button on PC */
+  }
+}
+.firstimage-body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.firstimage-container {
+  text-align: center;
+  width: 80%;
+}
+
+.firstimage-image-container {
+  margin-bottom: 20px;
+}
+
+.firstimage-image-container img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.firstimage-text-container {
+  width: 90%;
+  max-width: 100%;
+  margin: 0 auto;
+  font-size: 18px;
+  color: #333;
+  line-height: 1.6;
+}
+
+
+
+.lastimage-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: transparent;
+  border-radius: 8px;
+}
+
+.lastimage-image-container {
+  flex: 1;
+  max-width: 50%;
+  padding-right: 20px;
+}
+
+.lastimage-image-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.lastimage-text-container {
+  flex: 1;
+  max-width: 50%;
+}
+
+.lastimage-text-container p {
+  font-size: 18px;
+  color: #333;
+  margin: 0;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .lastimage-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .lastimage-image-container, .lastimage-text-container {
+      max-width: 100%;
+      padding-right: 0;
+  }
+
+  .lastimage-text-container p {
+      font-size: 16px;
+  }
+}
+
+
+
+
+
+
+.lastlastimage-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: transparent;
+  border-radius: 8px;
+}
+
+.lastlastimage-text-container {
+  flex: 1;
+  max-width: 50%;
+  padding-right: 20px;
+}
+
+.lastlastimage-text-container p {
+  font-size: 18px;
+  color: #333;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.lastlastimage-image-container {
+  flex: 1;
+  max-width: 50%;
+}
+
+.lastlastimage-image-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .lastlastimage-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .lastlastimage-text-container, .lastlastimage-image-container {
+      max-width: 100%;
+      padding-right: 0;
+  }
+
+  .lastlastimage-text-container p {
+      font-size: 16px;
+  }
+}
+
+
+
+
+footer {
+  background: linear-gradient(to bottom right, #643795, #33A1DA);
+  color: #fff;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-left {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-left img {
+  max-width: 150px;
+  margin-top: -70px; /* Move the logo upward */
+}
+
+.footer-left p {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+.social-media {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-media a {
+  color: #fff;
+  font-size: 1.5em;
+  transition: color 0.3s ease;
+}
+
+.social-media a:hover {
+  color: #e74c3c;
+}
+
+.footer-center {
+  flex: 2;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  min-width: 600px;
+}
+
+.footer-column {
+  flex: 1;
+  margin: 0 10px;
+  min-width: 150px;
+}
+
+.footer-column h3 {
+  margin-bottom: 10px;
+}
+
+.footer-column p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.contact-info {
+  margin-bottom: 20px;
+}
+
+.contact-info p {
+  display: flex;
+  align-items: center;
+}
+
+.contact-info img {
+  margin-right: 10px; /* Space between the image and text */
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  position: relative;
+}
+
+.footer-bottom::before {
+  content: "";
+  display: block;
+  width: 70%;
+  height: 1px;
+  background-color: #fff;
+  position: absolute;
+  top: -10px; /* Adjust the position of the line */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Remove underlines from links and ensure text color is white */
+.footer-column a {
+  color: #fff;
+  text-decoration: none; /* Remove underlining */
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #e74c3c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-container {
+      flex-direction: column;
+      align-items: flex-start; /* Align items to the left */
+  }
+
+  .footer-center {
+      flex-direction: column;
+      align-items: flex-start; /* Align items to the left */
+  }
+
+  .footer-column {
+      margin-bottom: 20px;
+      min-width: 100%;
+  }
+
+  .footer-left {
+      text-align: left;
+  }
+
+  .footer-left img {
+      margin: 0 0 10px 0; /* Adjust margin for left alignment */
+  }
+
+  .social-media {
+      justify-content: flex-start; /* Align social media to the left */
+  }
+
+  .footer-bottom {
+      text-align: left;
+  }
+
+  .footer-bottom::before {
+      width: 100%;
+      left: 0;
+      transform: none;
+  }
+}

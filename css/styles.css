@@ -1,0 +1,1317 @@
+/* <!-- <<<<<<<<<<HOME>>>>>>>>>> --> */
+
+:root {
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    font-family: Arial, sans-serif;
+}
+
+
+
+@media (max-width: 768px) {
+    .logo {
+        display: none; /* Hide the logo on small screens */
+    }
+
+    .header {
+        display: none; /* Hide the header on small screens, or adjust as needed */
+    }
+    .header.sticky {
+        display: none;
+    }
+    
+    
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 10px 0;
+    background-color: transparent;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    z-index: 1;
+}
+.header.sticky {
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 0;
+    opacity: 1;
+    z-index: 3; /* Increased z-index to ensure it stays on top of most elements */
+    overflow: visible;
+    position: fixed; /* Ensure header is fixed at the top */
+    top: 0;
+    width: 100%; /* Ensure the header takes full width */
+}
+
+.logo {
+    margin-left: 50px; /* Reset margin-left */
+    z-index: 10000; /* Keep it higher than other elements in the header */
+}
+
+.logo img {
+    width: 100px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 50%;
+    z-index: 10000;
+}
+
+
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    padding: 10px;
+    margin: 25px;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: background-color 0.3s, border-radius 0.3s;
+    position: relative; /* Ensure relative positioning for dropdown */
+}
+
+.header.sticky .navbar {
+    background-color: transparent;
+    border-radius: 0; /* Remove border-radius when sticky */
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.navbar li {
+    margin-right: 20px;
+    position: relative; /* Ensure relative positioning for dropdowns */
+}
+
+.navbar a {
+    color: #000;
+    text-decoration: none;
+    padding: 8px 16px;
+}
+
+.header.sticky .navbar a {
+    color: #fff;
+    margin-top: 10px;
+    gap: 100px;
+    background-color: transparent;
+   
+}
+
+
+
+.content {
+    padding-top: 100px;
+     /* Adjust based on header height */
+   
+}
+
+.background-image {
+    position: relative;
+    height: 80vh;
+    width: 100%;
+    border-radius: 0 0 50px 50px; /* Make the bottom edges round */
+    overflow: hidden; /* Ensure the rounded corners are visible */
+    background-size: cover;
+    background-position: center;
+}
+
+.background-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.center-button {
+    position: absolute;
+    top: 45%; /* Adjusted to move slightly above the dashboard */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.center-button button {
+    background-color: #ffffff;
+    color: #de19e5;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.center-button button:hover {
+    background-color: purple;
+    color: white;
+}
+
+
+
+.logo-globe {
+    position: fixed;
+    top: 46px;
+    right: 130px;
+    z-index: 1;
+}
+
+.logo-globe img {
+    width: 20px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 20px;
+}
+
+.logo-search {
+    position: fixed;
+    top: 46px;
+    right: 200px;
+    z-index: 1;
+}
+
+.logo-search img {
+    width: 20px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 20px;
+}
+
+.dashboard {
+    background-color: rgba(249, 249, 249, 0.3); /* 50% opacity */
+    color: #333;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners for the box */
+    border-top: 1px solid #ddd;
+    position: absolute;
+    bottom: 3%; /* Positioned above the bottom edge of the background image */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%; /* Adjust as needed */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+}
+
+.dashboard .dashboard-item {
+    text-align: center;
+    flex: 1;
+    padding: 20px;
+    position: relative;
+}
+
+.dashboard .dashboard-item:not(:last-child) {
+    border-right: 1px solid #ddd; /* Vertical line separator */
+}
+
+.dashboard .dashboard-item h3 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.dashboard .dashboard-item p {
+    font-size: 18px;
+    margin: 10px 0;
+    color: rgb(255, 255, 255);
+}
+
+.dashboard .dashboard-item span {
+    font-size: 32px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+}
+
+@keyframes countUp {
+    from {
+        counter-reset: num 1;
+    }
+    to {
+        counter-reset: num var(--end);
+    }
+}
+
+.dashboard-item span {
+    font-size: 32px;
+    font-weight: bold;
+    color: purple;
+    display: inline-block;
+    counter-reset: num 0;
+    animation: countUp 2s forwards;
+}
+
+@media (max-width: 768px) {
+    .dashboard {
+        display: none;
+    }
+}
+
+.toggle-btn {
+    display: block; /* Ensure the button is displayed */
+    position: fixed; /* Fix its position relative to the viewport */
+    top: 10px;
+    right: 20px;
+    z-index: 9999; /* Very high z-index to ensure it's on top */
+    cursor: pointer;
+    color: #F1FFFF;
+    font-size: 28px;
+}
+
+.logo {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+}
+
+.mobile-navbar {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 50px;
+    right: 10px; /* Adjust this value to move it away from the right border */
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 50%;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.mobile-navbar a {
+    color: purple;
+    text-decoration: none;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.mobile-navbar a:hover {
+    background-color: #333;
+}
+
+/* Show the toggle button and mobile navbar on small screens */
+@media (max-width: 768px) {
+    .toggle-btn {
+        display: block;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .mobile-navbar.active {
+        display: flex;
+    }
+}
+
+@media (min-width: 769px) {
+    .toggle-btn {
+        display: none; /* Hide toggle button on PC */
+    }
+}
+
+/* <!-- <<<<<<<<<<HOME ENDS>>>>>>>>>> --> */
+/* <!-- <<<<<<<<<<About>>>>>>>>>> --> */
+       /* CSS for center-aligning the h1 header */
+       .Contact {
+        text-align: center;
+    }
+    .Contact h1 {
+        margin: 0;
+        padding: 20px 0;
+        font-size: 2rem; /* Adjust as needed */
+    }
+    .purple_bullet {
+        list-style-type: none;
+        position: relative;
+        padding-left: 25px;
+        margin-bottom: 15px; /* Gap between each point */
+    }
+    .purple_bullet::before {
+        content: '\2714'; /* Unicode character for check mark */
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 16px;
+        color: white; /* Color of the tick */
+        background-color: purple; /* Background color of the circle */
+        border: 1px solid white; /* Border color of the circle */
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #explr {
+        background: linear-gradient(45deg, #ff6f61, purple); /* Gradient colors */
+        color: #fff; /* Text color */
+        padding: 16px 32px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: background 0.3s ease, transform 0.3s ease; /* Transition effects */
+    }
+    /* Hover effect */
+    #explr:hover {
+        background: linear-gradient(45deg, #d9a0d7, #ff6f61); /* Reverse gradient */
+        transform: scale(1.05); /* Slightly scale up the button */
+    }
+    /* Active effect */
+    #explr:active {
+        background: linear-gradient(45deg, #d9a0d7, #ff6f61); /* Same gradient on click */
+        transform: scale(0.95); /* Slightly scale down the button */
+    }
+    .about-section {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px;
+        background-color: #f4f4f4;
+        gap: 20px; /* Space between the paragraph and the grid */
+    }
+    .text-content {
+        flex: 1;
+        max-width: 100%; /* Full width on mobile */
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    /* Grid Container Styles */
+    #cssportal-grid {
+        flex: 1;
+        max-width: 100%; /* Full width on mobile */
+        display: grid;
+        grid-template-rows: repeat(6, 1fr);
+        grid-template-columns: repeat(6, 1fr);
+        gap: 10px; /* Gap between grid items */
+        box-sizing: border-box;
+    }
+    /* Common Styles for Grid Items */
+    .grid-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-radius: 15px; /* Curved corners */
+        box-sizing: border-box;
+    }
+    /* Specific Styles for Grid Items */
+    #div2 {
+        grid-area: 2 / 3 / 6 / 4;
+        height: 400px;
+        width: 250px;
+    }
+    #div3 {
+        grid-area: 1 / 2 / 3 / 3;
+        height: 200px; /* Adjust height if needed */
+        width: 250px; /* Fixed width for div3 */
+    }
+    #div4 {
+        grid-area: 3 / 1 / 7 / 3; /* Extending div4 towards the left side */
+        height: 350px;
+        /* Width adapts to the grid area */
+    }
+    #div2, #div3, #div4 {
+        position: relative; /* Make the divs relative for positioning the image */
+    }
+    #div2 img, #div3 img, #div4 img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 20px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensure the image covers the div and maintains aspect ratio */
+    }
+    .about-write {
+        padding: 20px;
+        background-color: #f4f4f4;
+    }
+    .about-write h1,
+    .about-write h2,
+    .about-write h3 {
+        color: purple;
+    }
+    .about-write .list-check {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        list-style: none; /* Remove default bullets */
+        padding-left: 0; /* Remove default padding */
+    }
+    .about-write .list-check::before {
+        content: "•"; /* Unicode for bullet point */
+        color: rgba(0, 0, 0, 0.5); /* Bullet color */
+        margin-right: 10px; /* Space between bullet and text */
+        font-size: 20px; /* Size of the bullet */
+    }
+    .about-write .button {
+        background-color: #d87093;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .about-section {
+            flex-direction: column; /* Stack text and images vertically */
+        }
+        #cssportal-grid {
+            display: block; /* Make the grid items stack vertically */
+        }
+        .grid-item {
+            margin-bottom: 20px; /* Space between images */
+            width: 100%; /* Full width for images */
+            height: 300px; /* Set a consistent height */
+        }
+        #cssportal-grid img {
+            width: 100%; /* Make images fill the grid item */
+            height: 100%; /* Ensure images cover the height */
+            object-fit: cover; /* Maintain aspect ratio and cover the container */
+            
+        }
+        #div2 {
+      
+        height: 400px;
+        width: 250px;
+    }
+    #div3 {
+       
+        height: 300px;
+        width: 250px; /* Fixed width for div3 */
+    }
+    #div4 {
+  
+        height: 300px;
+        width: 250px;
+    }
+    }
+/* <!-- <<<<<<<<<<About ENDS>>>>>>>>>> --> */
+/* <!-- <<<<<<<<<<Steps ENDS>>>>>>>>>> --> */
+html, body {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    margin: 0;
+    padding: 0;
+}
+
+/* Default styles for larger screens */
+.easy-steps-container {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: row; /* Default horizontal layout */
+    height: 70vh;
+    margin: 0;
+    align-items: center; /* Center items vertically */
+    text-align: center;
+    padding: 10px; /* Optional: Adds space around the container */
+    overflow: hidden; /* Ensure no overflow in the container */
+}
+
+.easy-steps-container .container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between; /* Distribute space between columns */
+}
+
+.easy-steps-container .progress-container,
+.easy-steps-container .result-container {
+    width: 50%; /* Set each column to 50% width */
+    padding: 20px; /* Optional: Adjust padding if needed */
+    box-sizing: border-box; /* Ensure padding is included in width calculation */
+    overflow: hidden; /* Ensure no overflow in columns */
+}
+
+.easy-steps-container .progress-container {
+    display: flex;
+    flex-direction: column; /* Ensure vertical alignment */
+    align-items: flex-start; /* Align items to the start */
+    position: relative; /* Allow absolute positioning of step labels */
+    overflow: hidden; /* Remove horizontal scroll */
+}
+
+.easy-steps-container .result-container {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    justify-content: flex-start; /* Align items to the left */
+    position: relative; /* Relative positioning for absolute elements */
+    overflow: hidden; /* Remove horizontal scroll */
+}
+
+.easy-steps-container .progress-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 18px;
+    left: -165px;
+    width: 100%;
+}
+
+.easy-steps-container .progress {
+    background-color: #f8ff21; /* Color for completed steps */
+    width: 10px;
+    border-radius: 30px;
+    position: absolute;
+    top: 0;
+    left: 30%;
+    transform: translateX(-50%);
+    transition: height 0.3s;
+    z-index: 2; /* Ensure progress line is on top */
+    height: 0; /* Initial height set to 0 */
+}
+
+.easy-steps-container .step {
+    border-radius: 50%;
+    background-color: transparent; /* Color for unseen steps */
+    border: 2px solid transparent; /* Border color for unseen steps */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: background-color 0.3s, border-color 0.3s;
+    z-index: 1;
+    margin: 30px 0; /* Increased gap between steps */
+    cursor: pointer;
+}
+
+.easy-steps-container .step.active,
+.easy-steps-container .step.completed {
+    background-color: transparent; /* Color for completed steps */
+    border-color: transparent; /* Border color for completed steps */
+    color: white;
+}
+
+.easy-steps-container .connector {
+    background-color: purple; /* Color for the line connecting unseen steps */
+    width: 10px;
+    border-radius: 30px;
+    position: absolute;
+    top: 0;
+    left: 30%;
+    transform: translateX(-50%);
+    height: 100%;
+    z-index: 1; /* Ensure connector is behind progress */
+}
+
+.easy-steps-container .connector.active {
+    background-color: #4caf50; /* Color for the line connecting completed steps */
+}
+
+.easy-steps-container .step-label {
+    position: absolute;
+    left: -105px; /* Adjusted space between step and label */
+    top: 40%;
+    transform: translateY(-50%);
+    font-size: 20px; /* Size of the label text */
+    color: #333;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflow text */
+    max-width: 500px; /* Increased maximum width for the label */
+    font-weight: normal; /* Set font weight to normal */
+    line-height: 1.4; /* Adjust line height if needed */
+}
+
+.easy-steps-container .result-box {
+    background: linear-gradient(to bottom right, #5F429C, #3993D1);
+    padding: 20px;
+    color: white;
+    border-radius: 45px 0px 45px 0px;
+    width: 100%; /* Full width */
+    max-width: 100%; /* Maximum width */
+    height: 350px; /* Fixed height */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* Optional: add a shadow for better visibility */
+    overflow: auto; /* To handle overflow if content is larger */
+    display: flex; /* Flexbox to center content */
+    align-items: flex-start; /* Align content to the top */
+    justify-content: center; /* Align content to the left */
+    text-align: justify; /* Justify text within the result-box */
+    flex-direction: column;
+    position: relative; /* Position relative for step number */
+}
+
+.result-box h2 {
+    margin: 0; /* Remove default margin for step number */
+    font-size: 100px; /* Font size for the step number */
+    font-style: unset;
+    position: absolute;
+    top: 10px; /* Position step number at the top */
+    left: 10px; /* Position step number at the left */
+    color: gold;
+    background: transparent; /* Optional: background color for readability */
+    padding: 5px; /* Padding around the step number */
+    border-radius: 5px; /* Rounded corners for the step number background */
+}
+
+.result-box p {
+    margin: 40px 0 0; /* Margin top adjusted to avoid overlap with step number */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .easy-steps-container .connector {
+        background-color: purple; /* Color for the line connecting unseen steps */
+        width: 10px;
+        border-radius: 30px;
+        position: absolute;
+        top: 0;
+        left: 5%;
+        transform: translateX(-50%);
+        height: 100%;
+        z-index: 1; /* Ensure connector is behind progress */
+    }
+    
+    .easy-steps-container {
+        flex-direction: column; /* Stack vertically on smaller screens */
+        height: auto; /* Allow container height to adjust */
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    .easy-steps-container .container {
+        flex-direction: column; /* Stack columns vertically */
+        width: 100%;
+    }
+
+    .easy-steps-container .progress-container,
+    .easy-steps-container .result-container {
+        width: 100%; /* Full width for both containers */
+        padding: 10px; /* Adjust padding for smaller screens */
+        box-sizing: border-box;
+    }
+
+    .easy-steps-container .progress-container {
+        margin-bottom: 20px; /* Add space between progress container and result container */
+        order: 1; /* Move progress container to the top */
+    }
+
+    .easy-steps-container .result-container {
+        order: 2; /* Move result container below progress container */
+    }
+
+    .easy-steps-container .step-label {
+        position: absolute;
+        left: -127px; /* Adjusted space between step and label */
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 12px; /* Size of the label text */
+        color: #333;
+        white-space: nowrap; /* Prevent text from wrapping */
+        overflow: hidden; /* Hide overflow text */
+        border-radius: 20px;
+        max-width: 500px; /* Increased maximum width for the label */
+        font-weight: normal; /* Set font weight to normal */
+        line-height: 1.4; /* Adjust line height if needed */
+    }
+
+    .easy-steps-container .progress-bar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        left: 0; /* Adjusted position */
+        width: 100%;
+    }
+
+    .easy-steps-container .progress {
+        left: 18px;
+        width: 12px; /* Adjust width to ensure visibility */
+        height: 11px; /* Adjust height if necessary */
+        z-index: 2; /* Ensure progress line is on top */
+    }
+}
+
+/* <!-- <<<<<<<<<<StepsENDS>>>>>>>>>> --> */
+/* <!-- <<<<<<<<<<Service>>>>>>>>>> --> */
+.icon {
+    color: rgba(255, 217, 0, 0.753); /* Change this to any color you prefer */
+    font-size: 24px; /* Adjust the size if needed */
+}
+
+.services-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin-top: 0; /* Adjusted to remove margin-top if it was set for navbar */
+}
+
+.services-section h1 {
+    margin-bottom: 30px; /* Increased spacing below header */
+    font-size: 2.5rem; /* Increased font size */
+    color: #000; /* Changed font color to black */
+}
+
+.services-section .container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Default layout for larger screens */
+    gap: 30px; /* Increased gap between boxes */
+    width: 100%;
+    max-width: 1000px;
+    padding: 20px;
+}
+
+.services-section .box {
+    display: flex;
+    align-items: center;
+    padding: 20px; /* Increased padding for larger boxes */
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Adjusted shadow for larger boxes */
+    text-decoration: none;
+    color: #000; /* Changed font color to black */
+    transition: background-color 0.3s, transform 0.3s;
+    min-height: 20px; /* Ensure box has a minimum height */
+}
+
+.services-section .box:hover {
+    background-color: #ffffff;
+    transform: scale(1.05);
+}
+
+.services-section .box-image {
+    width: 60px; /* Adjusted size as needed */
+    height: 60px; /* Adjusted size as needed */
+    object-fit: contain; /* Ensures image is contained without distortion */
+    margin-right: 20px; /* Increased space between image and icon */
+}
+
+.services-section .icon {
+    font-size: 50px; /* Increased icon size */
+    color: #000; /* Changed icon color to black */
+    margin-right: 20px; /* Increased space between icon and text */
+}
+
+.services-section .content {
+    flex: 1;
+}
+
+.services-section p {
+    margin: 0;
+    font-size: 1.1rem; /* Increased font size */
+    color: #000; /* Ensured text color is black */
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .services-section .container {
+        grid-template-columns: repeat(1, 1fr); /* Two boxes per row on mobile */
+    }
+}
+/* <!-- <<<<<<<<<<Service ENDS>>>>>>>>>> --> */
+
+/* <!-- <<<<<<<<<<Choose ENDS>>>>>>>>>> --> */
+.Contact {
+    padding: 20px;
+    text-align: center;
+}
+
+.Contact h1 {
+    margin: 40px 0; /* Adjust the top margin as needed */
+    padding: 20px 0; /* Optional: Add padding for spacing */
+    font-size: 2rem; /* Adjust the font size as needed */
+}
+
+.hover-gallery-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow images to wrap if necessary */
+    justify-content: center; /* Center images horizontally */
+    gap: 20px; /* Space between images */
+}
+
+.hover-gallery-item {
+    position: relative;
+    width: 30%; /* Adjust width as needed */
+    height: 500px; /* Adjust height as needed */
+    overflow: hidden;
+    border-radius: 15px; /* Optional: Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Shadow for a lifted effect */
+}
+
+.hover-gallery-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.hover-gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: rgb(255, 255, 255);
+    color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    text-align: center;
+    border-radius: 0 95px 0 0;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.hover-gallery-item:hover .hover-gallery-image {
+    transform: scale(1.05);
+}
+
+.hover-gallery-item:hover .hover-gallery-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hover-gallery-item {
+        width: 45%; /* Adjust width for tablets */
+        height: 400px; /* Adjust height as needed */
+    }
+
+    .hover-gallery-overlay {
+        height: 40%; /* Adjust overlay height */
+    }
+
+    .Contact h1 {
+        font-size: 1.75rem; /* Adjust font size for tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .hover-gallery-item {
+        width: 90%; /* Full width for mobile */
+        height: 300px; /* Adjust height for mobile */
+    }
+
+    .hover-gallery-overlay {
+        height: 80%; /* Adjust overlay height for mobile */
+    }
+
+    .Contact h1 {
+        font-size: 1.5rem; /* Adjust font size for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .hover-gallery-item {
+        width: 100%; /* Full width for small mobile */
+        height: 250px; /* Adjust height for small mobile */
+    }
+
+    .hover-gallery-overlay {
+        height: 80%; /* Adjust overlay height for small mobile */
+    }
+
+    .Contact h1 {
+        font-size: 1.25rem; /* Adjust font size for small mobile */
+    }
+}
+
+/* <!-- <<<<<<<<<<Choose ENDS>>>>>>>>>> --> */
+/* <!-- <<<<<<<<<<testimonials>>>>>>>>>> --> */
+
+.body .testimonials {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+    overflow: hidden; /* Hide overflow from animation */
+    position: relative; /* Positioning context for child elements */
+    width: 95%; /* Full width to fit the container */
+}
+
+.body .testimonials h1 {
+    margin-bottom: 20px;
+    color: #4C3779; /* Title color */
+}
+
+.body .testimonials-container-wrapper {
+    display: flex;
+    overflow: hidden; /* Hide horizontal overflow */
+    position: relative;
+    width: 100%; /* Positioning context for absolute children */
+}
+
+.body .testimonials-container {
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+    white-space: nowrap;
+    width: calc(100% + 20px); /* Double the width to ensure seamless scrolling */
+    animation: scroll 30s linear infinite; /* Infinite scrolling animation */
+}
+
+.body .testimonial-box {
+    background-color: #4C3779; /* Background color */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 400px; /* Fixed width */
+    height: 300px; /* Fixed height to fit image */
+    flex-shrink: 0; /* Prevent shrinking */
+    box-sizing: border-box; /* Include padding and border in width/height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.body .testimonial-box img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.body .testimonial-box p {
+    margin: 0 0 10px;
+    color: #fff; /* Text color */
+}
+
+.body .testimonial-box h3 {
+    margin: 0;
+    color: #FFD700; /* Name color (gold) */
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+/* <!-- <<<<<<<<<<testimonialsENDS>>>>>>>>>> --> */
+/* <!-- <<<<<<<<<<faq>>>>>>>>>> --> */
+.faq-section {
+    padding: 20px;
+    background: linear-gradient(to bottom right, #5F429C, #3B8FCE);
+    color: #fff;
+}
+
+.faq-section h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.accordion {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.accordion-item:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+}
+
+.accordion-header {
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    padding: 15px;
+    text-align: left;
+    border: none;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.accordion-header:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Slight highlight on hover */
+}
+
+.accordion-header::after {
+    content: '+';
+    font-size: 18px;
+    transition: transform 0.3s;
+}
+
+.accordion-header.active::after {
+    content: '-';
+}
+
+.accordion-content {
+    display: none;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 0px 0px 25px 25px;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.accordion-content p {
+    margin: 0;
+}
+/* <!-- <<<<<<<<<<faqENDS>>>>>>>>>> --> */
+
+footer {
+    background: linear-gradient(to bottom right, #643795, #33A1DA);
+    color: #fff;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-left {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-left img {
+    max-width: 150px;
+    margin-top: -70px; /* Move the logo upward */
+}
+
+.footer-left p {
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+.social-media {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-media a {
+    color: #fff;
+    font-size: 1.5em;
+    transition: color 0.3s ease;
+}
+
+.social-media a:hover {
+    color: #e74c3c;
+}
+
+.footer-center {
+    flex: 2;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    min-width: 600px;
+}
+
+.footer-column {
+    flex: 1;
+    margin: 0 10px;
+    min-width: 150px;
+}
+
+.footer-column h3 {
+    margin-bottom: 10px;
+}
+
+.footer-column p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.contact-info {
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+}
+
+.contact-info img {
+    margin-right: 10px; /* Space between the image and text */
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    position: relative;
+}
+
+.footer-bottom::before {
+    content: "";
+    display: block;
+    width: 70%;
+    height: 1px;
+    background-color: #fff;
+    position: absolute;
+    top: -10px; /* Adjust the position of the line */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Remove underlines from links and ensure text color is white */
+.footer-column a {
+    color: #fff;
+    text-decoration: none; /* Remove underlining */
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: #e74c3c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: flex-start; /* Align items to the left */
+    }
+
+    .footer-center {
+        flex-direction: column;
+        align-items: flex-start; /* Align items to the left */
+    }
+
+    .footer-column {
+        margin-bottom: 20px;
+        min-width: 100%;
+    }
+
+    .footer-left {
+        text-align: left;
+    }
+
+    .footer-left img {
+        margin: 0 0 10px 0; /* Adjust margin for left alignment */
+    }
+
+    .social-media {
+        justify-content: flex-start; /* Align social media to the left */
+    }
+
+    .footer-bottom {
+        text-align: left;
+    }
+
+    .footer-bottom::before {
+        width: 100%;
+        left: 0;
+        transform: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+
+client */
+.clients-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.clients-left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-right: 2px solid #000000a7; /* Line separating the columns */
+    height: 100px;
+    padding-right: 5px;
+}
+
+.clients-left h2 {
+    font-size: 24px;
+    font-family: cloud;
+    color: purple;
+    margin: 0;
+}
+
+.clients-right {
+    flex: 3;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.clients-right .logos {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.clients-right .logos img {
+    max-width: 100px; /* Adjust the size of the logos */
+    margin: 0 10px; /* Spacing between logos */
+}
+
+@media (max-width: 768px) {
+    .clients-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .clients-left, .clients-right {
+        border-right: none;
+        padding: 10px 0;
+    }
+
+    .clients-right {
+        flex: none; /* Remove flex properties to use grid layout */
+        padding: 10px 0;
+    }
+
+    .clients-right .logos {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 columns */
+        gap: 10px; /* Spacing between items */
+    }
+
+    .clients-right .logos img {
+        max-width: 80px; /* Adjust the size of the logos */
+        margin: 0; /* Remove margin for grid layout */
+    }
+}

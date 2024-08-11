@@ -1,0 +1,473 @@
+/* <!-- <<<<<<<<<<HOME>>>>>>>>>> --> */
+
+/* <!-- <<<<<<<<<<SERVICE TWO >>>>>>>>>> --> */
+:root {
+  --servicetwo-bg-color: #f5f5f5; /* Example background color */
+  --servicetwo-text-color: #333; /* Example text color */
+  --servicetwo-border-radius: 10px; /* Example border radius */
+  --servicetwo-padding: 20px; /* Example padding */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--servicetwo-bg-color);
+  color: var(--servicetwo-text-color);
+}
+
+.container {
+  display: flex;
+  align-items: stretch; /* Ensures columns stretch to the same height */
+  padding: var(--servicetwo-padding);
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap; /* Allows columns to wrap on smaller screens */
+}
+
+.text-column {
+  flex: 1;
+  margin-right: 20px; /* Space between the columns */
+  max-width: 60%; /* Adjust as needed */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.text-column p {
+  text-align: justify;
+  margin: 0; /* Remove default margin */
+}
+
+.image-column {
+  flex: 1;
+  max-width: 40%; /* Adjust as needed */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.image-column img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--servicetwo-border-radius); /* Use border radius from servicetwo */
+}
+
+@media (max-width: 768px) {
+  .container {
+      flex-direction: column; /* Stack columns vertically */
+      align-items: center; /* Center align the columns */
+  }
+
+  .text-column {
+      max-width: 100%;
+      margin-right: 0; /* Remove space between columns */
+      margin-bottom: var(--servicetwo-padding); /* Add space below the text column */
+  }
+
+  .image-column {
+      max-width: 100%;
+  }
+}
+
+  /* <!-- <<<<<<<<<<SERVICE TWO ENDS>>>>>>>>>> --> */
+
+  /* <!-- <<<<<<<<<<SERVICE THree >>>>>>>>>> --> */
+  .mv-container {
+    display: flex;
+    align-items: stretch; /* Make sure children stretch to container height */
+    justify-content: center; /* Center content horizontally */
+    gap: 20px; /* Space between the columns and the divider */
+    height: 300px; /* Set a fixed height to ensure the divider is visible */
+    flex-wrap: wrap; /* Allow wrapping for responsiveness */
+}
+
+.mv-mission, .mv-vision {
+    flex: 1; /* Allow both sections to grow equally */
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+.mv-divider {
+    width: 5px; /* Set width of the divider */
+    height: 100%; /* Ensure it spans the full height of the container */
+    background-image: linear-gradient(to bottom, #DB7B45, #E74747, #B60808, #120FAD, #1CE43C, #FFED50);
+    border-radius: 30px;
+}
+
+/* Heading styles */
+.mv-heading-secondary {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Paragraph styling */
+.mv-paragraph-text {
+    font-size: 18px;
+    color: #666;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .mv-container {
+        flex-direction: column; /* Stack sections vertically */
+        height: auto; /* Let height adjust based on content */
+    }
+
+    .mv-mission, .mv-vision {
+        max-width: 100%; /* Ensure sections take full width */
+        padding: 10px; /* Reduce padding for smaller screens */
+    }
+
+    .mv-divider {
+        display: none; /* Remove divider on smaller screens */
+    }
+
+    .mv-heading-secondary {
+        font-size: 20px; /* Adjust font size for smaller screens */
+    }
+
+    .mv-paragraph-text {
+        font-size: 16px; /* Adjust font size for smaller screens */
+    }
+}
+
+  /* <!-- <<<<<<<<<<SERVICE THree ENDS>>>>>>>>>> --> */
+
+.custom-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Adjust the space between the boxes as needed */
+    padding: 20px;
+}
+
+.custom-large-box, .custom-image-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Adjust the space between the boxes as needed */
+}
+
+.custom-large-box {
+    height: 300px; /* Adjust to match the height of the smaller boxes */
+    border-radius: 15px; /* Adjust the radius for rounded corners */
+    overflow: hidden; /* Ensures the image fits within the rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds a shadow effect */
+    position: relative;
+}
+
+.custom-large-box img {
+    width: 100%;
+    height: 100%; /* Ensure images fill the box's height */
+    object-fit: cover; /* Ensure images cover the box area */
+    display: block; /* Ensures the image takes the full width and height */
+}
+
+.custom-image-wrapper {
+    gap: 20px; /* Adjust as needed */
+}
+
+.custom-image-box {
+    flex: 1;
+    border-radius: 15px; /* Adjust the radius for rounded corners */
+    overflow: hidden; /* Ensures the image fits within the rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds a shadow effect */
+    height: 300px; /* Ensures all boxes have the same height */
+    position: relative;
+}
+
+.custom-image-box img {
+    width: 100%;
+    height: 100%; /* Ensure images fill the box's height */
+    object-fit: cover; /* Ensure images cover the box area */
+    display: block; /* Ensures the image takes the full width and height */
+}
+
+.custom-box-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the content */
+    color: white;
+    padding: 10px;
+    background: transparent; /* Semi-transparent background for text readability */
+    border-radius: 10px;
+    text-align: center; /* Center text within the box */
+    width: 80%; /* Optional: Adjust width to fit text */
+}
+
+.custom-button-container {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%); /* Center the button horizontally */
+    margin: 0;
+}
+
+.custom-load-more-button {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    color: black; /* Text color */
+    background-color: white; /* Button color */
+    border: none;
+    border-radius: 25px; /* Rounded corners */
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional: Adds a shadow effect */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.custom-load-more-button:hover {
+    background-color: #f0f0f0; /* Light gray background on hover */
+    color: #333; /* Darker text color on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* More pronounced shadow on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .custom-large-box, .custom-image-wrapper {
+        flex-direction: column;
+        height: auto; /* Adjust height for smaller screens */
+    }
+
+    .custom-large-box, .custom-image-box {
+        height: 200px; /* Reduce height for tablets */
+    }
+
+    .custom-container {
+        padding: 15px;
+    }
+
+    .custom-box-content {
+        font-size: 16px;
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .custom-large-box, .custom-image-wrapper {
+        flex-direction: column;
+        height: auto; /* Adjust height for smaller screens */
+    }
+
+    .custom-large-box, .custom-image-box {
+        height: 150px; /* Reduce height for smaller devices */
+    }
+
+    .custom-container {
+        padding: 10px;
+        gap: 10px; /* Reduce gap for smaller screens */
+    }
+
+    .custom-box-content {
+        font-size: 14px;
+        width: 95%;
+    }
+
+    .custom-load-more-button {
+        font-size: 12px; /* Adjust button font size for smaller screens */
+        padding: 6px 12px; /* Adjust padding for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .custom-large-box, .custom-image-wrapper {
+        flex-direction: column;
+        height: auto; /* Adjust height for smaller screens */
+    }
+
+    .custom-large-box, .custom-image-box {
+        height: 120px; /* Further reduce height for very small devices */
+    }
+
+    .custom-container {
+        padding: 5px;
+        gap: 5px; /* Further reduce gap for very small screens */
+    }
+
+    .custom-box-content {
+        font-size: 12px;
+        width: 100%;
+    }
+
+    .custom-load-more-button {
+        font-size: 10px; /* Adjust button font size for very small screens */
+        padding: 4px 8px; /* Adjust padding for very small screens */
+    }
+}
+
+
+
+.custom-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Adjust the space between the boxes as needed */
+  padding: 20px;
+}
+
+.custom-large-box, .custom-image-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Adjust the space between the boxes as needed */
+}
+
+.custom-large-box {
+  height: 300px; /* Adjust to match the height of the smaller boxes */
+  border-radius: 15px; /* Adjust the radius for rounded corners */
+  overflow: hidden; /* Ensures the image fits within the rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds a shadow effect */
+  position: relative;
+}
+
+.custom-large-box img {
+  width: 100%;
+  height: 100%; /* Ensure images fill the box's height */
+  object-fit: cover; /* Ensure images cover the box area */
+  display: block; /* Ensures the image takes the full width and height */
+}
+
+.custom-image-wrapper {
+  gap: 20px; /* Adjust as needed */
+}
+
+.custom-image-box {
+  flex: 1;
+  border-radius: 15px; /* Adjust the radius for rounded corners */
+  overflow: hidden; /* Ensures the image fits within the rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds a shadow effect */
+  height: 300px; /* Ensures all boxes have the same height */
+  position: relative;
+}
+
+.custom-image-box img {
+  width: 100%;
+  height: 100%; /* Ensure images fill the box's height */
+  object-fit: cover; /* Ensure images cover the box area */
+  display: block; /* Ensures the image takes the full width and height */
+}
+
+.custom-box-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the content */
+  color: white;
+  padding: 10px;
+  background: transparent; /* Semi-transparent background for text readability */
+  border-radius: 10px;
+  text-align: center; /* Center text within the box */
+  width: 80%; /* Optional: Adjust width to fit text */
+}
+
+.custom-button-container {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%); /* Center the button horizontally */
+  margin: 0;
+}
+
+.custom-load-more-button {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: black; /* Text color */
+  background-color: white; /* Button color */
+  border: none;
+  border-radius: 25px; /* Rounded corners */
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional: Adds a shadow effect */
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.custom-load-more-button:hover {
+  background-color: #f0f0f0; /* Light gray background on hover */
+  color: #333; /* Darker text color on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* More pronounced shadow on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .custom-large-box, .custom-image-wrapper {
+      flex-direction: column;
+      height: auto; /* Adjust height for smaller screens */
+  }
+
+  .custom-large-box, .custom-image-box {
+      height: 200px; /* Reduce height for tablets */
+  }
+
+  .custom-container {
+      padding: 15px;
+  }
+
+  .custom-box-content {
+      font-size: 16px;
+      width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .custom-large-box, .custom-image-wrapper {
+      flex-direction: column;
+      height: auto; /* Adjust height for smaller screens */
+  }
+
+  .custom-large-box, .custom-image-box {
+      height: 150px; /* Reduce height for smaller devices */
+  }
+
+  .custom-container {
+      padding: 10px;
+      gap: 10px; /* Reduce gap for smaller screens */
+  }
+
+  .custom-box-content {
+      font-size: 14px;
+      width: 95%;
+  }
+
+  .custom-load-more-button {
+      font-size: 12px; /* Adjust button font size for smaller screens */
+      padding: 6px 12px; /* Adjust padding for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-large-box, .custom-image-wrapper {
+      flex-direction: column;
+      height: auto; /* Adjust height for smaller screens */
+  }
+
+  .custom-large-box, .custom-image-box {
+      height: 120px; /* Further reduce height for very small devices */
+  }
+
+  .custom-container {
+      padding: 5px;
+      gap: 5px; /* Further reduce gap for very small screens */
+  }
+
+  .custom-box-content {
+      font-size: 12px;
+      width: 100%;
+  }
+
+  .custom-load-more-button {
+      font-size: 10px; /* Adjust button font size for very small screens */
+      padding: 4px 8px; /* Adjust padding for very small screens */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
